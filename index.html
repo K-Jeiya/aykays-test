@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBindle - Stay Connected, Stay Social, Stay You!</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #1C1C1C;
+    overflow-x: hidden;
+    background-color: #F2F2F2;
+}
+
+.hero-section {
+    background: #FF4F5A;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 30px 30px;
+}
+
+.logo {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.hero-heading {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    background: white;
+    color: #FF4F5A;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1.1rem;
+}
+
+.cta-button:hover {
+    background: #f8f9fa;
+    color: #FF4F5A;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.phone-mockup {
+    position: relative;
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.phone-frame {
+    width: 100%;
+    display: block;
+    z-index: 1;
+}
+
+.screen-inside {
+    position: absolute;
+    top: 48px;
+    left: 200px;
+    width: 203px;
+    height: 455px;
+    border-radius: 16px;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.floating-badge {
+    position: absolute;
+    background: white;
+    backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    z-index: 5;
+}
+
+.badge-top {
+    top: 15%;
+    left: 20%;
+}
+
+.badge-bottom {
+    bottom: 25%;
+    right: 10%;
+}
+
+.section-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #1C1C1C;
+}
+
+.section-subheading {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #131313;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: #FF4F5A;
+    margin-bottom: 1rem;
+}
+
+.feature-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1C1C1C;
+}
+
+.feature-red-circle {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background-color: #FF4F5A;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.feature-phone-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.feature-screen-phone {
+    display: block;
+    border-radius: 28px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 4px solid #000000;
+    object-fit: cover;
+}
+
+.feature-phone-left {
+    transform: rotate(-12deg);
+    margin-right: 20px;
+    width: 170px;
+}
+
+.small-screen {
+    width: 100%;
+    height: auto;
+}
+
+.feature-phone-right {
+    transform: rotate(12deg);
+    margin-left: 20px;
+    width: 220px;
+}
+
+.large-screen {
+    width: 100%;
+    height: auto;
+}
+
+.feature-box {
+    background: #F2F2F2;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    margin-bottom: 1.5rem;
+}
+
+.feature-box h4 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1C1C1C;
+}
+
+.install-steps {
+    padding: 100px 0;
+    background: #F2F2F2;
+}
+
+.steps-wrapper {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.step-block {
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
+    background: #F2F2F2;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.step-number.active {
+    color: #FF4F5A;
+}
+
+.step-line-between {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px 10px;
+    z-index: 1;
+    margin-top: 18px;
+}
+
+.step-card {
+    background: #F2F2F2;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.step-card h3 {
+    font-weight: 600;
+}
+
+.cta-section {
+    background: #FF4F5A;
+    color: white;
+    padding: 50px 0px 140px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.cta-phone-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.cta-phone {
+    border-radius: 28px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 4px solid #000000;
+    object-fit: cover;
+    position: absolute;
+    transition: 0.3s ease;
+}
+
+.phone-left {
+    width: 230px;
+    left: -40px;
+    top: 20px;
+    z-index: 1;
+}
+
+.phone-right {
+    width: 230px;
+    right: -50px;
+    top: -90px;
+    z-index: 2;
+}
+
+.testimonials-section {
+    padding: 100px 0;
+    background: #F2F2F2;
+}
+
+.testimonial-card {
+    background: #F2F2F2;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.05);
+}
+
+.stars {
+    color: #FFD700;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    background: #ddd;
+}
+
+.final-cta-section {
+    background: #FF4F5A;
+    color: white;
+    padding: 20px 0;
+    overflow: hidden;
+    border-radius: 30px 30px 0 0;
+}
+
+.final-cta-phone-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+.final-cta-phone {
+    border-radius: 28px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 4px solid #000000;
+    object-fit: cover;
+    width: 250px;
+    transform: translateX(20px);
+    position: relative;
+    left: -40px;
+    bottom: -200px;
+    z-index: 2;
+}
+
+.see-more-btn {
+    background: white;
+    color: #FF4F5A;
+    padding: 12px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.see-more-btn:hover {
+    background: #f8f9fa;
+    color: #FF4F5A;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .phone-mockup {
+        width: 500px;
+    }
+    .screen-inside {
+        top: 40px;
+        left: 165px;
+        width: 170px;
+        height: 380px;
+    }
+    .feature-red-circle {
+        width: 350px;
+        height: 350px;
+    }
+    .feature-phone-left {
+        width: 150px;
+    }
+    .feature-phone-right {
+        width: 190px;
+    }
+    .cta-phone-wrapper {
+        max-width: 350px;
+    }
+    .phone-left, .phone-right {
+        width: 200px;
+    }
+    .final-cta-phone {
+        width: 220px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-section {
+        text-align: center;
+        padding: 2rem 0;
+    }
+    .hero-heading {
+        font-size: clamp(2rem, 4.5vw, 3.5rem);
+    }
+    .phone-mockup {
+        width: 400px;
+        margin-top: 2rem;
+    }
+    .screen-inside {
+        top: 32px;
+        left: 132px;
+        width: 136px;
+        height: 304px;
+    }
+    .floating-badge {
+        position: static;
+        margin: 1rem auto;
+        display: inline-block;
+    }
+    .app-features-section .row {
+        text-align: center;
+    }
+    .feature-red-circle {
+        width: 300px;
+        height: 300px;
+    }
+    .feature-phone-wrapper {
+        margin: 1rem 0;
+    }
+    .feature-phone-left, .feature-phone-right {
+        transform: none;
+        width: 160px;
+        margin: 0 auto;
+    }
+    .steps-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .step-line-between {
+        height: 50px;
+        width: 2px;
+        margin: 10px 0;
+    }
+    .cta-section {
+        padding: 50px 0;
+    }
+    .cta-phone-wrapper {
+        max-width: 300px;
+        margin-top: 2rem;
+    }
+    .phone-left, .phone-right {
+        width: 45%;
+        position: relative;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        margin: 10px auto;
+    }
+    .cta-section .hero-description {
+        margin-right: 0;
+    }
+    .final-cta-phone {
+        width: 200px;
+        transform: none;
+        left: 0;
+        bottom: 0;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-heading {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+    .phone-mockup {
+        width: 300px;
+    }
+    .screen-inside {
+        top: 24px;
+        left: 99px;
+        width: 102px;
+        height: 228px;
+    }
+    .feature-red-circle {
+        width: 250px;
+        height: 250px;
+    }
+    .feature-phone-left, .feature-phone-right {
+        width: 140px;
+    }
+    .install-steps {
+        padding: 50px 0;
+    }
+    .step-number {
+        font-size: 2rem;
+    }
+    .cta-phone-wrapper {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+    .phone-left, .phone-right {
+        width: 45%;
+        margin: 10px;
+    }
+    .final-cta-phone {
+        width: 180px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        margin-bottom: 2rem;
+    }
+    .hero-heading {
+        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    }
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    .phone-mockup {
+        width: 250px;
+    }
+    .screen-inside {
+        top: 20px;
+        turnleft: 82px;
+        width: 85px;
+        height: 190px;
+    }
+    .section-heading {
+        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    }
+    .section-subheading {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+    .feature-card {
+        padding: 1.5rem;
+    }
+    .feature-title {
+        font-size: 1.1rem;
+    }
+    .feature-red-circle {
+        width: 200px;
+        height: 200px;
+    }
+    .feature-phone-left, .feature-phone-right {
+        width: 120px;
+    }
+    .feature-box {
+        padding: 1rem;
+    }
+    .step-card {
+        padding: 1.5rem;
+    }
+    .step-number {
+        font-size: 1.8rem;
+    }
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    .final-cta-phone {
+        width: 160px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="logo" style="width: auto; height: 40px;"> MyBindle
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-heading">
+                        Stay Connected<br>
+                        Stay Social<br>
+                        Stay You!
+                    </h1>
+                    <p class="hero-description">
+                        A place where friendships grow, communities thrive, and moments turn into unforgettable
+                        experiences. Whether you're looking to reconnect with old friends, build new relationships, or
+                        share what matters most to you – MyBindle is your home on the internet.
+                    </p>
+                    <a href="#" style="
+  background-color: #fff;
+  color: #FF4F5A;
+  border-radius: 10px;
+  padding: 10px 30px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+" onmouseover="this.style.backgroundColor='#f8f9fa'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 25px rgba(0, 0, 0, 0.15)'"
+                        onmouseout="this.style.backgroundColor='#fff'; this.style.transform='none'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.1)'">
+                        Get Started
+                    </a>
+                </div>
+                <div class="col-lg-6 position-relative">
+                    <!-- <img src="./phone-mockup.jpg" alt="Phone Mockup" class="phone-mockup"> -->
+                    <div class="phone-mockup">
+                        <img src="phoneframe.png" class="phone-frame" />
+                        <img src="phone-mockup.jpg" class="screen-inside" />
+                    </div>
+                    <div class="floating-badge badge-top">
+                        🔥Seamless Connections
+                    </div>
+                    <div class="floating-badge badge-bottom">
+                        🌍Discover & Explore
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <h2 class="section-heading">Features That Keep You Hooked!</h2>
+            <p class="section-subheading">Meet, Chat, Share – Anytime, Anywhere!</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <h3 class="feature-title">🔥 Seamless Connections</h3>
+                        <p>Stay in touch with friends, family, and like-minded people with just a tap.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <h3 class="feature-title">📸 Share Your Story</h3>
+                        <p>Upload photos, videos, and updates to let the world know what’s happening in your life.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <h3 class="feature-title">💬 Real-Time Chat</h3>
+                        <p>Whether it's a DM or a group conversation, connect instantly with smooth, lightning-fast messaging.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <h3 class="feature-title">🔒 Privacy First</h3>
+                        <p>Your data, your control. We prioritize your privacy with world-class security.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <h3 class="feature-title">🌎 Discover & Explore</h3>
+                        <p>Find trending content, join communities, and follow pages that match your interests.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <h3 class="feature-title">💼 Grow Your Business</h3>
+                        <p>Use our platform to market your brand, connect with customers, and build meaningful relationships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Features Section -->
+    <section class="app-features-section">
+        <div class="container">
+            <div class="row align-items-center">
+<div class="col-lg-6 position-relative d-flex justify-content-center align-items-center">
+  <div class="feature-red-circle"></div>
+
+  <!-- Small Left Phone -->
+  <div class="feature-phone-wrapper feature-phone-left">
+    <img src="phone1.jpg" class="feature-screen-phone small-screen" />
+  </div>
+
+  <!-- Large Right Phone -->
+  <div class="feature-phone-wrapper feature-phone-right">
+    <img src="phone2.jpg" class="feature-screen-phone large-screen" />
+  </div>
+</div>
+
+
+
+                <div class="col-lg-6">
+                    <h2 class="section-heading text-start">Where Every Click Sparks a Connection!</h2>
+                    <p>A small act of kindness today can create a lifetime of impact for someone in need. Give from the heart and change a life!</p>
+                    <div class="feature-box">
+                        <h4> 🎥 Short Videos & Reels</h4>
+                        <p>Share engaging, bite-sized content that keeps everyone entertained.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4> 🔔 Smart Notifications</h4>
+                        <p>Stay updated on what matters without the noise.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4> 👥 Interest-Based Communities</h4>
+                        <p>Join groups and discussions that match your passion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="install-steps">
+  <div class="container">
+    <h2 class="section-heading text-center">How to Install Our App</h2>
+    <p class="section-subheading text-center">
+      Getting started is quick and easy! Follow these simple steps to install and start using MyBindle today.
+    </p>
+
+    <div class="steps-wrapper d-flex justify-content-between align-items-center">
+      <!-- Step 1 -->
+      <div class="step-block text-center">
+        <div class="step-number active">01</div>
+      </div>
+
+      <!-- Line between 1 and 2 -->
+      <div class="step-line-between"></div>
+
+      <!-- Step 2 -->
+      <div class="step-block text-center">
+        <div class="step-number">02</div>
+      </div>
+
+      <!-- Line between 2 and 3 -->
+      <div class="step-line-between"></div>
+
+      <!-- Step 3 -->
+      <div class="step-block text-center">
+        <div class="step-number">03</div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <!-- Step 1 Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="step-card text-center">
+          <h3>Download</h3>
+          <p>Open Play Store or App Store</p>
+        </div>
+      </div>
+
+      <!-- Step 2 Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="step-card text-center">
+          <h3>Install App</h3>
+          <p>The app will install automatically.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 Card -->
+      <div class="col-lg-4 col-md-6">
+        <div class="step-card text-center">
+          <h3>Ready to Use</h3>
+          <p>Sign up or log in to start exploring!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CTA SECTION  -->
+<section class="cta-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- 📝 Left Content -->
+      <div class="col-lg-6">
+        <h2 class="section-heading text-start text-white" style=" margin-right: -100px;">
+          Be the Reason Someone Smiles Today!
+        </h2>
+        <p class="hero-description" style="margin-right: -200px;">
+Your generosity can change lives every donation brings hope, support, and a brighter future. Give today and make a difference!        </p>
+<a href="#" class="cta-button">Donate Now</a>
+
+      </div>
+
+      <!-- 📱 Right App Screens -->
+      <div class="col-lg-6 d-flex justify-content-center align-items-center position-relative">
+        <div class="cta-phone-wrapper">
+          <!-- Left Smaller Phone -->
+          <img src="./AppSS1.jpg" class="cta-phone phone-left" alt="App Screenshot 1" />
+          <!-- Right Larger Phone -->
+          <img src="./AppSS2.jpg" class="cta-phone phone-right" alt="App Screenshot 2" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-heading">What Our Users Say</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>This platform changed the way I stay in touch with my friends and family. The interface is smooth, and I love how easy it is to share my moments!</p>
+                        <div class="user-info">
+                            <img src="user1.jpg" alt="Emily R."
+                                class="user-avatar">
+                            <div>
+                                <strong>Emily R</strong><br>
+                                <small>USA</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>Finally, a social network that understands what I need! The privacy features are a game-changer, and I feel safer sharing my life online</p>
+                        <div class="user-info">
+                            <img src="user2.jpg" alt="Amit K"
+                                class="user-avatar">
+                            <div>
+                                <strong>Amit K</strong><br>
+                                <small>India</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>I joined just to explore, but now I can't imagine my day without it. The real-time chat and engaging communities make every interaction special!</p>
+                        <div class="user-info">
+                            <img src="user3.jpg" alt="Sophie M"
+                                class="user-avatar">
+                            <div>
+                                <strong>Sophie M</strong><br>
+                                <small>UK</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>Running my small business has never been easier! This platform helped me connect with customers, promote my products, and grow my brand</p>
+                        <div class="user-info">
+                            <img src="user4.jpg" alt="Javier L"
+                                class="user-avatar">
+                            <div>
+                                <strong>Javier L</strong><br>
+                                <small>Spain</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>The perfect blend of fun and functionality! Whether I want to go live, discover trending content, or just catch up with friends, everything is right here!</p>
+                        <div class="user-info">
+                            <img src="user5.jpg" alt="Lucas T"
+                                class="user-avatar">
+                            <div>
+                                <strong>Lucas T</strong><br>
+                                <small>Brazil</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>I’ve tried many social platforms, but this one truly stands out! The experience feels personal, the connections feel real, and every feature just makes sense</p>
+                        <div class="user-info">
+                            <img src="user6.jpg" alt="Nora S"
+                                class="user-avatar">
+                            <div>
+                                <strong>Nora S</strong><br>
+                                <small>Canada</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="see-more-btn">See More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+<section class="final-cta-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- 📝 Left Content -->
+      <div class="col-lg-8">
+        <h2 class="section-heading text-white text-start">
+          Join the Fun – Download MyBindle Now!
+        </h2>
+        <p class="hero-description">
+          Don't miss out on the social revolution. Download MyBindle today and start connecting like never before!
+        </p>
+        <a href="#" class="cta-button">Download Now</a>
+      </div>
+
+      <!-- 📱 Right Phone Image -->
+      <div class="col-lg-4 d-flex justify-content-center align-items-center position-relative">
+        <div class="final-cta-phone-wrapper">
+          <img src="./finalSS.jpg" class="final-cta-phone" alt="Final App Screenshot" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Section Animations
+        gsap.timeline()
+            .from(".hero-heading", {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: "power2.out"
+            })
+            .from(".hero-description", {
+                duration: 0.8,
+                y: 30,
+                opacity: 0,
+                ease: "power2.out"
+            }, "-=0.5")
+            .from(".cta-button", {
+                duration: 0.6,
+                y: 20,
+                ease: "power2.out"
+            }, "-=0.3")
+            .from(".phone-mockup", {
+                duration: 1,
+                x: 100,
+                opacity: 0,
+                ease: "power2.out"
+            }, "-=0.8")
+            .from(".floating-badge", {
+                duration: 0.8,
+                scale: 0,
+                opacity: 0,
+                ease: "back.out(1.7)",
+                stagger: 0.2
+            }, "-=0.4");
+
+        // Feature Cards Animation
+        gsap.fromTo(".feature-card", {
+            y: 50,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".features-section",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // App Features Section Animation
+        gsap.fromTo(".feature-box", {
+            x: 50,
+            opacity: 0
+        }, {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: ".app-features-section",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Install Steps Animation
+        gsap.fromTo(".step-card", {
+            y: 50,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.3,
+            scrollTrigger: {
+                trigger: ".install-steps",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // CTA Section Animation
+        gsap.fromTo(".cta-section h2", {
+            scale: 0.8,
+            opacity: 0
+        }, {
+            scale: 1,
+            opacity: 1,
+            duration: 1,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+                trigger: ".cta-section",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Testimonials Animation
+        gsap.fromTo(".testimonial-card", {
+            y: 50,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.15,
+            scrollTrigger: {
+                trigger: ".testimonials-section",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Final CTA Animation
+        gsap.fromTo(".final-cta h2", {
+            y: 30,
+            opacity: 0
+        }, {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "bounce.out",
+            scrollTrigger: {
+                trigger: ".final-cta",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Button Hover Effects
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, {
+                    duration: 0.3,
+                    scale: 1.05,
+                    ease: "power2.out"
+                });
+            });
+
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, {
+                    duration: 0.3,
+                    scale: 1,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        // Parallax effect for hero section
+        gsap.to(".hero-section", {
+            yPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-section",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
