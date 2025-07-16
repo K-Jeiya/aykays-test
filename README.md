@@ -77,7 +77,10 @@ Frontend Developer
 
 ## 📬 Contact
 
-For questions or feedback, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/jeiyakumari/) or GitHub.
+For any questions, suggestions, or feedback, feel free to reach out:
+
+- 📧 Email: [jeiyakumari@gmail.com](mailto:jeiyakumari@gmail.com)  
+- 📱 WhatsApp: [+92 327 2815521](https://wa.me/923272815521)
 
 ---
 
