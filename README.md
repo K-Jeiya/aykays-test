@@ -12,7 +12,7 @@ This project is a responsive webpage built as part of the **Frontend Developer e
 
 ## 📁 GitHub Repository
 
-🔗 [GitHub Repo](https://https://github.com/K-Jeiya/aykays-test)
+🔗 [GitHub Repo](https://github.com/K-Jeiya/aykays-test)
 
 ---
 
