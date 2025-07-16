@@ -6,13 +6,13 @@ This project is a responsive webpage built as part of the **Frontend Developer e
 
 ## 🔗 Live Demo
 
-🌐 [View Deployed Website](https://your-netlify-link-here.netlify.app)
+🌐 [View Deployed Website](https://aykays-mybindle.netlify.app/)
 
 ---
 
 ## 📁 GitHub Repository
 
-🔗 [GitHub Repo](https://github.com/YourUsername/your-repo-name)
+🔗 [GitHub Repo](https://https://github.com/K-Jeiya/aykays-test)
 
 ---
 
